@@ -6,8 +6,8 @@ from decimal import Decimal
 class User(AbstractUser):
     name = models.CharField(max_length=100, default="Sin nombre")
     last_name = models.CharField(max_length=150)
-    email = models.EmailField(unique=True)  # Asegura que el correo sea único
-    password = models.CharField(max_length=500)  # Se puede dejar, pero si usas AbstractUser, se maneja internamente
+    email = models.EmailField(unique=True)  
+    password = models.CharField(max_length=500)  
     ROLE_CHOICES = [
         (1, 'customer'),
         (2, 'admin'),
@@ -37,11 +37,12 @@ class Product(models.Model):
     description = models.TextField(max_length=2000)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.IntegerField()
-    features = models.TextField()  # Cambiado a TextField
-    imgs = models.ImageField(upload_to='uploads/')
+    features = models.TextField()  
+    imgs = models.ImageField(upload_to='uploads/', null=True, blank=True)  
 
     def __str__(self):
         return self.name
+
 
 
 # Modelo de Categoría

@@ -16,6 +16,7 @@
     height: 80px;
     width: 100%;
     flex-direction: row;
+
 }
 
 .containerLinks{
@@ -39,6 +40,24 @@
     flex-direction: row;
     list-style: none;
 }
+
+.Link a{
+    text-decoration: none;
+    padding: 16px;
+    background: var(--primary-color);
+    color: var(--background-color);
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 10px;
+    transition: background 500ms ease-in-out, transform 800ms ease;
+}
+.Link a:hover{
+    background: var(--secondary-color);
+    transform: translateY(-5px);
+
+}
+
+
 
 .link img{
     width: 40px;

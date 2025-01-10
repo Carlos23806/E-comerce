@@ -4,10 +4,12 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
 from .models import User
+from .models import Product
 
 
 def home(request):
-    return render(request, 'index.html')
+    products = Product.objects.all()  
+    return render(request, 'index.html', {'productss': products})
 
 def login_register_view(request):
     if request.user.is_authenticated:

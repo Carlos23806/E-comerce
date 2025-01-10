@@ -1,5 +1,4 @@
 {% extends 'layouts/Header.html' %}
-
 {% load static %}
 
 <!DOCTYPE html>
@@ -10,6 +9,9 @@
     <title>Home</title>
 </head>
 <body>
-    <!-- El contenido de la plantilla extendida va aquí -->
+    {% for product in products %}
+        <h1 class="title">{{ product.name }}</h1>
+        <p>{{ product.description }}</p>
+    {% endfor %}
 </body>
 </html>
