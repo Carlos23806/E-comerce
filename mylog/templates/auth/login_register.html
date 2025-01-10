@@ -1,0 +1,85 @@
+<!-- templates/auth/login_register.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso | Registro</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/login_register.css' %}">
+</head>
+<body>
+    {% if messages %}
+        <div class="alert-container">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="main-container">
+        <!-- Panel Izquierdo - Login -->
+        <div class="form-container" id="loginContainer">
+            <form action="{% url 'mylog:login' %}" method="POST" class="form-section">
+                {% csrf_token %}
+                <h2 class="title">Iniciar Sesión</h2>
+                <div class="input-group">
+                    <input type="email" name="email" required autocomplete="email">
+                    <label>Correo Electrónico</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" required>
+                    <label>Contraseña</label>
+                </div>
+                <button type="submit" class="submit-btn">Ingresar</button>
+                <p class="toggle-text">¿No tienes cuenta? <span class="toggle-btn" id="showRegister">Regístrate</span></p>
+            </form>
+        </div>
+
+        <!-- Panel Derecho - Registro -->
+        <div class="form-container" id="registerContainer">
+            <form id="registerForm" action="{% url 'mylog:register' %}" method="POST" class="form-section">
+                {% csrf_token %}
+                <h2 class="title">Crear Cuenta</h2>
+        
+                <!-- Sección 1 -->
+                <div id="section1">
+                    <div class="input-group">
+                        <input type="text" name="username" id="username" required autocomplete="username">
+                        <label>Nombre de Usuario</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="name" id="name" required>
+                        <label>Nombre</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="last_name" id="last_name" required>
+                        <label>Apellido</label>
+                    </div>
+                    <button type="button" class="submit-btn" id="continueBtn">Continuar</button>
+                </div>
+        
+                <!-- Sección 2 (inicialmente oculta) -->
+                <div id="section2" style="display: none;">
+                    <div class="input-group">
+                        <input type="email" name="email" id="email" required>
+                        <label>Correo Electrónico</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" name="password1" id="password1" required>
+                        <label>Contraseña</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" name="password2" id="password2" required>
+                        <label>Confirmar Contraseña</label>
+                    </div>
+                    <button type="submit" class="submit-btn">Registrarse</button>
+                </div>
+                
+                <p class="toggle-text">¿Ya tienes cuenta? <span class="toggle-btn" id="showLogin">Inicia Sesión</span></p>
+            </form>
+        </div>
+
+    <script src="{% static 'js/auth.js' %}"></script>
+</body>
+</html>

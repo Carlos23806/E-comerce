@@ -52,10 +52,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'myapp.urls'
 
+# myauth/settings.py
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates',  # Añade esta línea
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
