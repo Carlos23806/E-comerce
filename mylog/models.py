@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from decimal import Decimal
+from django.db import models
+import os
 
 # Extender el modelo User para incluir el rol y la dirección
 class User(AbstractUser):
@@ -8,6 +10,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=150)
     email = models.EmailField(unique=True)  
     password = models.CharField(max_length=500)  
+    imgs = models.ImageField(upload_to='uploads/UserProfile/', blank=True, default='uploads/default_profile_picture.jpg')
     ROLE_CHOICES = [
         (1, 'customer'),
         (2, 'admin'),
@@ -15,15 +18,14 @@ class User(AbstractUser):
     role = models.IntegerField(choices=ROLE_CHOICES, default=1)
     address = models.CharField(max_length=255, blank=True, null=True)
 
-    # Especificar related_name para evitar conflictos con los nombres predeterminados
     groups = models.ManyToManyField(
         'auth.Group',
-        related_name='mylog_user_set',  # 'mylog_user_set' es el nombre que querías cambiar
+        related_name='mylog_user_set',  
         blank=True
     )
     user_permissions = models.ManyToManyField(
         'auth.Permission',
-        related_name='mylog_user_permissions',  # Cambié a un nombre único
+        related_name='mylog_user_permissions',  
         blank=True
     )
 
@@ -38,10 +40,16 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.IntegerField()
     features = models.TextField()  
-    imgs = models.ImageField(upload_to='uploads/', null=True, blank=True)  
+    imgs = models.ImageField(upload_to='uploads/', blank=True)  
 
     def __str__(self):
         return self.name
+    
+    def delete(self, *args, **kwargs):
+        if self.imgs:
+            if os.path.isfile(self.imgs.path):
+                os.remove(self.imgs.path)
+        super().delete(*args, **kwargs)
 
 
 

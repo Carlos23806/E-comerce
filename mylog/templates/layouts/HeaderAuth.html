@@ -1,0 +1,23 @@
+<!-- HeaderAuth.html -->
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/Header.css' %}">
+</head>
+<nav class="nav">
+    <ul class="containerLinks">
+        <li class="link">
+            <h1 class="logo">Logo del e-comerce</h1>
+        </li>
+        <div class="links">
+            <li class="link"><img src="{% static 'icons/Svg/Cart.Svg' %}" alt="Carrito de compra"></li>
+            <form action="{% url 'mylog:logout' %}" method="post">
+                {% csrf_token %}
+                <button class="link" type="submit">Cerrar sesión</button>
+            </form>            
+            <img src="{% if user.profile.img %}{{ user.profile.img.url }}{% else %}{% get_media_prefix %}uploads/UserProfile/default_profile_picture.jpg{% endif %}" alt="Foto de perfil">
+        </div>
+    </ul>
+</nav>
+
+{% block content %}{% endblock %}

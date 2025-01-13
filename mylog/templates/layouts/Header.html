@@ -1,22 +1,20 @@
-{%load static%}
-
-<head>
-    <link rel="stylesheet" href="{% static 'styles/Header.css' %}">
-</head>
+{% load static %} 
 
 <nav class="nav">
-    <ul class="containerLinks">
-        <li class="link">
+    <div class="containerLinks">
+        <div class="link">
             <h1 class="logo">Logo del e-comerce</h1>
-        </li>
-        <div class="links">
-
-            <li class="link"><img src="{% static 'icons/Svg/Cart.Svg' %}" alt="Carrito de compra">
-            </li>
-            <li class="link"><a href="log/">inicio de sesion</a></li>
         </div>
-    </ul>
+        <ul class="links">
+            <li class="link">
+                <img src="{% static 'icons/Svg/Cart.Svg' %}" alt="Carrito de compra">
+            </li>
+            <li class="link">
+                <a href="log/">inicio de sesion</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
-{%block content%}
-{%endblock%}
+
+{% block content %}{% endblock %}

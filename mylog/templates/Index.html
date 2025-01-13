@@ -1,17 +1,23 @@
-{% extends 'layouts/Header.html' %}
+{% extends 'layouts/Headers.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    {% for product in products %}
-        <h1 class="title">{{ product.name }}</h1>
-        <p>{{ product.description }}</p>
-    {% endfor %}
-</body>
-</html>
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    </head>
+    <button class="addProduct">Añadir un producto</button>
+    <div class="contanerCard">
+        {% for product in products %}
+        <div class="card">
+            <img src="{{ product.imgs.url }}" alt="{{ product.name }}">
+            <h1 class="title">{{ product.name }}</h1>
+            <p class="Description">{{ product.description }}</p>
+            <button class="Buy">Comprar {{ product.price }}</button>
+            <a class="MoreInfo" href="{{ product.name }}">Mas informacion de {{ product.name }}</a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+

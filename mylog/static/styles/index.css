@@ -1,3 +1,65 @@
-.title{
-    font-size: 70px;
+
+.contanerCard{
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    padding: 90px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+.card img{
+    width: 90px;
+    height: 90px;
+    object-fit: cover ;
+}
+
+
+.Buy{
+    width: 90%;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    color: #fff;
+    background-color: #4ecdc4;
+    transition: transform 800ms ease;
+    margin-bottom: 10px;
+}
+
+.Buy:hover{
+    transform: translateY(-5px);
+}
+
+.Buy:active{
+    background-color: #46b9b2;
+}
+
+
+.MoreInfo{
+    color: #46b9b2;
+    text-decoration: none;
+}
+
+.MoreInfo:hover{
+    color: #389791;
+    text-decoration:underline;
+}
+
+.addProduct{
+    position: relative;
+    top: 75px;
+    left: 75%;
+    padding: 10px;
+    border:none;
+    border-radius: 8px;
 }
