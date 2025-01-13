@@ -7,3 +7,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mylog.urls', namespace='mylog')),  # Agregamos el namespace aquí
 ]
+

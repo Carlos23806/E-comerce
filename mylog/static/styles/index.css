@@ -1,65 +1,169 @@
-
-.contanerCard{
-    display: flex;
-    justify-content: space-evenly;
-    width: 80%;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    padding: 90px;
+:root {
+    --primary-color: #4ecdc4;
+    --secondary-color: #45b7d1;
+    --error-color: #ff6b6b;
+    --success-color: #4ecdc4;
+    --text-color: #333;
+    --background-color: #f5f5f5;
+    --transition-speed: 0.3s;
 }
 
-.card{
+
+.contanerCard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    width: 1200px;
+    justify-items: center;
+    align-items: center;
+    margin: auto;
+}
+
+.card {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 250px;
-    height: 300px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    height: 358px;
+    display: none;
 }
-.card img{
-    width: 90px;
-    height: 90px;
-    object-fit: cover ;
+
+.card.visible {
+    display: flex; 
 }
 
 
-.Buy{
-    width: 90%;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    color: #fff;
-    background-color: #4ecdc4;
-    transition: transform 800ms ease;
-    margin-bottom: 10px;
-}
 
-.Buy:hover{
+.card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.Buy:active{
-    background-color: #46b9b2;
-}
-
-
-.MoreInfo{
-    color: #46b9b2;
-    text-decoration: none;
-}
-
-.MoreInfo:hover{
-    color: #389791;
-    text-decoration:underline;
-}
-
-.addProduct{
-    position: relative;
-    top: 75px;
-    left: 75%;
-    padding: 10px;
-    border:none;
+.card img {
+    height: 150px;
+    object-fit: contain;
     border-radius: 8px;
+}
+
+.card .title {
+    font-size: 1.2rem;
+    margin: .6rem 0;
+    white-space: nowrap;
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card .Description {
+    flex-grow: 1;
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.card .Buy {
+    padding: 0.8rem;
+    background: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+}
+
+.card .Buy:hover {
+    background: var(--secondary-color);
+}
+
+.card .MoreInfo {
+    text-align: center;
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.MoreInfo{
+    text-decoration: underline;
+}
+
+.addProduct {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 200px;
+    height: 50px;
+    margin: 2rem auto;
+    padding: .5rem 1.5rem;
+    background: #949494;
+    color: var(--background-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.addProduct img{
+    width: 20px;
+    height: 20px;
+}
+
+.addProduct:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.load-more-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    outline: none;
+}
+
+.load-more {
+    color: var(--text-color);
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    outline: none;
+    border: none;
+}
+
+.load-more:hover{
+    text-decoration: underline;
+}
+
+.load-more.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .contanerCard {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .card {
+        height: 400px;
+    }
+
+    .card img {
+        height: 180px;
+    }
 }

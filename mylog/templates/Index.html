@@ -5,11 +5,11 @@
     <head>
         <link rel="stylesheet" href="{% static 'styles/index.css' %}">
     </head>
-    <button class="addProduct">Añadir un producto</button>
-    <div class="contanerCard">
+    <button class="addProduct"><img src="{% static 'icons/Svg/Agregar.Svg' %}" alt=""> Añadir un producto</button>
+    <div class="contanerCard" id="productContainer">
         {% for product in products %}
-        <div class="card">
-            <img src="{{ product.imgs.url }}" alt="{{ product.name }}">
+        <div class="card" style="display: none;">
+            <img src="..{{ product.imgs.url }}" alt="{{ product.name }}">
             <h1 class="title">{{ product.name }}</h1>
             <p class="Description">{{ product.description }}</p>
             <button class="Buy">Comprar {{ product.price }}</button>
@@ -17,7 +17,9 @@
         </div>
         {% endfor %}
     </div>
+    <div class="load-more-container">
+        <button id="loadMoreBtn" class="load-more">Cargar más productos</button>
+    </div>
+
+    <script src="{% static 'js/ProductsV.js' %}"></script>
 {% endblock %}
-
-
-

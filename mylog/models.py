@@ -10,7 +10,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=150)
     email = models.EmailField(unique=True)  
     password = models.CharField(max_length=500)  
-    imgs = models.ImageField(upload_to='uploads/UserProfile/', blank=True, default='uploads/default_profile_picture.jpg')
+    imgs = models.ImageField(upload_to='uploads/UserProfile/', blank=True, default='uploads/UserProfile/default_profile_picture.jpg')
     ROLE_CHOICES = [
         (1, 'customer'),
         (2, 'admin'),
@@ -40,7 +40,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.IntegerField()
     features = models.TextField()  
-    imgs = models.ImageField(upload_to='uploads/', blank=True)  
+    imgs = models.ImageField(upload_to='uploads/', blank=True, default="uploads/DProduct.webp")  
 
     def __str__(self):
         return self.name

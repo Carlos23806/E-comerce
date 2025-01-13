@@ -1,12 +1,26 @@
+:root {
+    --primary-color: #4ecdc4;
+    --secondary-color: #45b7d1;
+    --error-color: #ff6b6b;
+    --success-color: #4ecdc4;
+    --text-color: #333;
+    --background-color: #ffffff;
+    --transition-speed: 0.3s;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .nav {
     display: flex;
     height: 80px;
     width: 100%;
-    background: linear-gradient(to right, #f8f9fa, #e9ecef);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
+    background-color: var(--background-color);
 }
 
 .containerLinks {
@@ -56,38 +70,79 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.link img {
+/* Nuevos estilos para HeaderAuth */
+.links form {
+    margin: 0;
+    padding: 0;
+}
+
+.links button.link {
+    padding: 0.8rem 1.5rem;
+    background: var(--primary-color);
+    color: var(--background-color);
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.links button.link:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.links img {
     width: 32px;
     height: 32px;
     object-fit: contain;
     transition: transform 0.3s ease;
 }
 
+/* Estilo específico para la imagen de perfil */
+.links img[alt="Foto de perfil"] {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(0, 0, 0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: border 200ms ease , transform 300ms ease-in-out ;
+}
+
+.links img[alt="Foto de perfil"]:hover {
+    transform: scale(1.1);
+    border:  2px solid var(--secondary-color);
+}
+
 .link img:hover {
     transform: scale(1.1);
 }
 
-:root {
-    --primary-color: #2563eb;
-    --secondary-color: #1d4ed8;
-    --background-color: #ffffff;
-}
 
 @media (max-width: 768px) {
     .containerLinks {
         width: 95%;
     }
-    
+
     .links {
         gap: 1rem;
     }
-    
+
     .logo {
         font-size: 1.5rem;
     }
-    
-    .link a {
+
+    .link a,
+    .links button.link {
         padding: 0.6rem 1.2rem;
         font-size: 0.9rem;
+    }
+
+    .links img[alt="Foto de perfil"] {
+        width: 35px;
+        height: 35px;
     }
 }
