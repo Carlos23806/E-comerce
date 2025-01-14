@@ -42,6 +42,7 @@
                 {% csrf_token %}
                 <h2 class="title">Crear Cuenta</h2>
         
+                <!-- Sección 1: Datos Básicos -->
                 <div id="section1">
                     <div class="input-group">
                         <input type="text" name="username" id="username" required autocomplete="username">
@@ -55,9 +56,10 @@
                         <input type="text" name="last_name" id="last_name" required>
                         <label>Apellido</label>
                     </div>
-                    <button type="button" class="submit-btn" id="continueBtn">Continuar</button>
+                    <button type="button" class="submit-btn" id="continueBtn">Continuar</button> <!-- Solo cambia la sección, no envía el formulario -->
                 </div>
         
+                <!-- Sección 2: Datos de Contacto -->
                 <div id="section2" style="display: none;">
                     <div class="input-group">
                         <input type="email" name="email" id="email" required>
@@ -71,13 +73,14 @@
                         <input type="password" name="password2" id="password2" required>
                         <label>Confirmar Contraseña</label>
                     </div>
-                    <button type="submit" class="submit-btn">Registrarse</button>
+                    <button type="submit" class="submit-btn">Registrarse</button> <!-- Este sí envía el formulario completo -->
                 </div>
                 
                 <p class="toggle-text">¿Ya tienes cuenta? <span class="toggle-btn" id="showLogin">Inicia Sesión</span></p>
             </form>
         </div>
 
+    </div>
     <script src="{% static 'js/auth.js' %}"></script>
 </body>
 </html>

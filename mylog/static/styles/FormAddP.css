@@ -1,0 +1,266 @@
+:root {
+    --primary-color: #4ecdc4;
+    --secondary-color: #45b7d1;
+    --error-color: #ff6b6b;
+    --success-color: #4ecd83;
+    --text-color: #333;
+    --background-color: #f5f5f5;
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.content {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    min-height: calc(100vh - 80px);
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#AddProductContainer {
+    background: var(--background-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 30px;
+}
+
+.form-section {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Cambiado de center a flex-start */
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.input-group {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.input-group:last-of-type {
+    margin-bottom: 40px; /* Mayor espacio antes del botón */
+}
+
+#section1, #section2 {
+    margin-bottom: 20px; /* Espacio para el botón */
+}
+
+#section2{
+    height: 450px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    outline: none;
+    font-size: 16px;
+    transition: border-color var(--transition-speed);
+    background: transparent;
+}
+
+.input-group .file-input-container {
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+}
+.file-input-container {
+    margin-bottom: 20px; /* Espacio adicional después del contenedor de archivo */
+}
+
+.input-group input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 175px;
+    cursor: pointer;
+}
+
+.file-input-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    border: 2px dashed var(--primary-color);
+    border-radius: 8px;
+    background-color: rgba(78, 205, 196, 0.05);
+    transition: all var(--transition-speed);
+}
+
+.file-input-label:hover {
+    background-color: rgba(78, 205, 196, 0.1);
+    transform: translateY(-2px);
+}
+
+.file-input-label svg {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.file-input-label span {
+    color: var(--text-color);
+    font-size: 14px;
+    text-align: center;
+}
+
+.file-input-label .file-name {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Estilos para cuando se está arrastrando un archivo */
+.file-input-label.dragover {
+    background-color: rgba(78, 205, 196, 0.15);
+    border-style: solid;
+}
+
+/* Ajustes adicionales para mejorar la apariencia general */
+.input-group {
+    margin-bottom: 30px;
+}
+
+.input-group label {
+    font-weight: 500;
+    color: #666;
+}
+
+.input-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    transition: all var(--transition-speed);
+    resize: vertical;
+    min-height: 120px;
+    background-color: white;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-family: inherit;
+}
+
+
+.input-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.1);
+}
+
+.input-group label {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: #999;
+    pointer-events: none;
+    transition: var(--transition-speed);
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label,
+.input-group textarea:focus + label,
+.input-group textarea:valid + label {
+    top: -20px;
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: var(--primary-color);
+}
+
+.submit-btn {
+    background: var(--primary-color);
+    color: var(--background-color);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px; 
+    width: 100%;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    position: relative; 
+}
+
+#section2 .submit-btn{
+    margin-top: 80px;
+    position: relative;
+    top: 90px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.2);
+}
+
+.alert-container {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.alert {
+    padding: 12px 24px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: var(--background-color);
+    animation: slideIn 0.3s ease-out;
+
+}
+
+.alert-error {
+    background-color: var(--error-color);
+}
+
+.alert-success {
+    background-color: var(--success-color);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .form-section {
+        padding: 15px;
+    }
+    
+    #AddProductContainer {
+        width: 90%;
+        max-width: 500px;
+    }
+}

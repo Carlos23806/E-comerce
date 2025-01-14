@@ -5,7 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'styles/Header.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/Base.css' %}">
+    {% if user.is_authenticated %}
+        <link rel="stylesheet" href="{% static 'styles/HeaderAuth.css' %}">
+    {% else %}
+        <link rel="stylesheet" href="{% static 'styles/Header.css' %}">
+    {% endif %}
 </head>
 <body>
     {% block header %}

@@ -2,14 +2,49 @@
 {% load static %}
 
 {% block content %}
-    <head>
-        <link rel="stylesheet" href="{% static 'styles/index.css' %}">
-    </head>
-    <button class="addProduct"><img src="{% static 'icons/Svg/Agregar.Svg' %}" alt=""> Añadir un producto</button>
+
+<head>
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+</head>
+
+<div class="hero-carousel">
+    <div class="hero-carousel-background"></div>
+    <div class="hero-content">
+        <h1>Bienvenido a Nuestra <span>Tienda</span></h1>
+        <p>Descubre una amplia selección de productos de alta calidad.</p>
+        <a href="#productos" class="hero-cta">Explorar Productos</a>
+    </div>
+    <div class="carousel-indicators">
+        <span class="indicator active"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+    </div>
+</div>
+
+<div style="display: none;">
+    <img data-carousel-image="{% static 'Fondo/pexels-craigmdennis-205421.jpg' %}">
+    <img data-carousel-image="{% static 'Fondo/pexels-jessbaileydesign-788946.jpg' %}">
+    <img data-carousel-image="{% static 'Fondo/pexels-natri-129208.jpg' %}">
+    <img data-carousel-image="{% static 'Fondo/pexels-nickoloui-2473183.jpg' %}">
+    <img data-carousel-image="{% static 'Fondo/pexels-thepaintedsquare-583842.jpg' %}">
+</div>
+
+<div class="main-content">
+    {% if user.is_authenticated %}
+    <a class="LinkAddProduct" href="{% url 'mylog:addproduct' %}">
+        <button class="addProduct">
+            <img src="{% static 'icons/Svg/Agregar.Svg' %}" alt="">
+            Añadir un producto
+        </button>
+    </a>
+    {% endif %}
+
     <div class="contanerCard" id="productContainer">
         {% for product in products %}
         <div class="card" style="display: none;">
-            <img src="..{{ product.imgs.url }}" alt="{{ product.name }}">
+            <img src="{{ product.imgs.url }}" alt="{{ product.name }}">
             <h1 class="title">{{ product.name }}</h1>
             <p class="Description">{{ product.description }}</p>
             <button class="Buy">Comprar {{ product.price }}</button>
@@ -17,9 +52,12 @@
         </div>
         {% endfor %}
     </div>
+
     <div class="load-more-container">
         <button id="loadMoreBtn" class="load-more">Cargar más productos</button>
     </div>
+</div>
 
-    <script src="{% static 'js/ProductsV.js' %}"></script>
+<script src="{% static 'js/ProductsV.js' %}"></script>
+<script src="{% static 'js/Carrusel.js' %}"></script>
 {% endblock %}

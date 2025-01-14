@@ -6,143 +6,148 @@
     --text-color: #333;
     --background-color: #ffffff;
     --transition-speed: 0.3s;
+    --nav-height: 80px;
 }
-*{
+
+/* Base styles */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Layout components */
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
 .nav {
-    display: flex;
-    height: 80px;
+    height: var(--nav-height);
     width: 100%;
     position: sticky;
     top: 0;
     z-index: 1000;
     background-color: var(--background-color);
+    transition: all var(--transition-speed);
 }
 
 .containerLinks {
-    display: flex;
-    height: 100%;
-    width: 90%;
     max-width: 1200px;
+    width: 90%;
+    height: 100%;
     margin: 0 auto;
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Navigation states */
+.nav-home {
+    background: transparent;
+    position: absolute;
+}
+
+.nav-scrolled {
+    position: fixed;
+    background-color: var(--background-color);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
+
+/* Logo styles */
+.logo {
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.nav-home .logo {
+    color: var(--background-color);
+}
+
+.nav-scrolled .logo {
+    color: var(--text-color);
+}
+
+/* Links styles */
 .links {
     display: flex;
     list-style: none;
     gap: 2rem;
     align-items: center;
-    padding: 0;
-    margin: 0;
 }
 
 .link {
     display: flex;
     align-items: center;
+    filter: none;
 }
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin: 0;
-}
-
+/* Button and link styles */
 .link a {
     text-decoration: none;
     padding: 0.8rem 1.5rem;
-    background: var(--primary-color);
-    color: var(--background-color);
     font-weight: 600;
-    font-size: 1rem;
     border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.link a:hover {
-    background: var(--secondary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Nuevos estilos para HeaderAuth */
-.links form {
-    margin: 0;
-    padding: 0;
-}
-
-.links button.link {
-    padding: 0.8rem 1.5rem;
-    background: var(--primary-color);
-    color: var(--background-color);
-    font-weight: 600;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: none;
+    transition: all var(--transition-speed);
     cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.links button.link:hover {
-    background: var(--secondary-color);
+.nav-home .link a {
+    background: transparent;
+    color: var(--background-color);
+    border: 1px solid var(--background-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+.nav-home .link a:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
 }
 
+.nav-scrolled .link a {
+    background: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+}
+
+.nav-scrolled .link a:hover {
+    transform: translateY(-3px);
+    background: var(--secondary-color);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Basic image styles */
 .links img {
     width: 32px;
     height: 32px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
 }
 
-/* Estilo específico para la imagen de perfil */
-.links img[alt="Foto de perfil"] {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(0, 0, 0);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: border 200ms ease , transform 300ms ease-in-out ;
+.nav-home .links img {
+    filter: brightness(0) invert(1);
 }
 
-.links img[alt="Foto de perfil"]:hover {
-    transform: scale(1.1);
-    border:  2px solid var(--secondary-color);
-}
-
-.link img:hover {
-    transform: scale(1.1);
-}
-
-
+/* Media queries */
 @media (max-width: 768px) {
     .containerLinks {
         width: 95%;
     }
-
-    .links {
-        gap: 1rem;
-    }
-
-    .logo {
-        font-size: 1.5rem;
-    }
-
-    .link a,
-    .links button.link {
+    
+    .link a {
         padding: 0.6rem 1.2rem;
         font-size: 0.9rem;
     }
+}
 
-    .links img[alt="Foto de perfil"] {
-        width: 35px;
-        height: 35px;
-    }
+/* Content spacing */
+main {
+    padding-top: 80px;
+}
+
+.home-page main {
+    padding-top: 0;
 }

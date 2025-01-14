@@ -1,0 +1,206 @@
+/* Authenticated user specific styles */
+.links form {
+    margin: 0;
+    padding: 0;
+}
+
+.links button.link {
+    padding: 0.8rem 1.5rem;
+    background: var(--primary-color);
+    color: var(--background-color);
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.links button.link:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile image styles */
+.links img[alt="Foto de perfil"] {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(0, 0, 0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: border 200ms ease, transform 300ms ease-in-out;
+}
+
+.links img[alt="Foto de perfil"]:hover {
+    transform: scale(1.05);
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.link img:hover {
+    transform: scale(1.1);
+}
+
+/* User specific nav states */
+.nav-home .link .User {
+    background: transparent;
+    color: var(--background-color);
+    border: none;
+}
+
+.nav-home .link .User:hover img {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.15);
+}
+
+.nav-scrolled .links .User {
+    background-color: transparent;
+}
+
+.nav-scrolled .links .User:hover {
+    box-shadow: none;
+}
+
+/* Logo colors */
+.nav-home .logo h1 {
+    color: var(--background-color);
+}
+
+.nav-scrolled .logo h1 {
+    color: var(--text-color);
+}
+
+/* Link hover effects */
+.link a:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation states */
+.nav-home {
+    background: transparent;
+    backdrop-filter: blur(8px);
+    position: absolute;
+}
+
+.nav-scrolled {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+}
+
+/* Button and form styles */
+.links form {
+    margin: 0;
+    padding: 0;
+}
+
+.links button.link {
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 12px;
+    background: var(--gradient-1);
+    color: var(--background-color);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.links button.link:hover {
+    transform: translateY(-3px);
+    background: var(--gradient-2);
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.3);
+}
+
+/* Nav home state styles */
+.nav-home button.link {
+    background: transparent;
+    color: var(--background-color);
+    border: 1px solid var(--background-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-home button.link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Nav scrolled state styles */
+.nav-scrolled button.link {
+    background: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+}
+
+.nav-scrolled button.link:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile image styles */
+.links img[alt="Foto de perfil"] {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 3px solid transparent;
+    background: var(--gradient-1);
+    transition: all var(--transition-speed);
+}
+
+.nav-home .links img[alt="Foto de perfil"] {
+    border-color: var(--background-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-scrolled .links img[alt="Foto de perfil"] {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.links img[alt="Foto de perfil"]:hover {
+    transform: scale(1.08) rotate(3deg);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+}
+
+/* Cart icon styles */
+.links img[alt="Carrito de compra"] {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+    background: var(--gradient-1);
+    border-radius: 10px;
+    transition: all var(--transition-speed);
+}
+
+.nav-home .links img[alt="Carrito de compra"] {
+    filter: brightness(0) invert(1);
+}
+
+.links img[alt="Carrito de compra"]:hover {
+    transform: scale(1.1) translateY(-2px);
+    background: var(--gradient-2);
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.2);
+}
+
+/* Logo styles */
+.logo h1 {
+    font-size: 1.5rem;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all var(--transition-speed);
+}
+
+.logo h1:hover {
+    background: var(--gradient-2);
+    -webkit-background-clip: text;
+    transform: scale(1.05);
+}

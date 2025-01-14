@@ -148,7 +148,7 @@ body {
     padding: 12px 24px;
     margin-bottom: 10px;
     border-radius: 5px;
-    color: white;
+    color: var(--background-color);
     animation: slideIn 0.3s ease-out;
 }
 

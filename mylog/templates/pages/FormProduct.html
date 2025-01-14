@@ -1,1 +1,76 @@
+{% extends 'layouts/Headers.html' %}
 {%load static%}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Productos</title>
+    <link rel="stylesheet" href="{% static 'styles/FormAddP.css' %}">
+</head>
+
+<body>
+    {% if messages %}
+    <div class="alert-container">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="form-container" id="AddProductContainer">
+        <form id="registerPForm" action="{% url 'mylog:addproduct' %}" method="POST" class="form-section" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2 class="title">Registra un nuevo producto</h2>
+
+            <div id="section1">
+                <div class="input-group">
+                    <input type="text" name="name" id="name" required autocomplete="name">
+                    <label>Nombre de Usuario</label>
+                </div>
+                <div class="input-group">
+                    <textarea name="description" id="description" required></textarea>
+                    <label>Descripcion del producto</label>
+                </div>
+                <div class="input-group">
+                    <input type="number" name="price" id="price" required>
+                    <label>Precio del producto</label>
+                </div>
+                <button type="button" class="submit-btn" id="continueBtn">Continuar</button>
+            </div>
+
+            <div id="section2" style="display: none;">
+                <div class="input-group">
+                    <input type="number" name="stock" id="stock" required>
+                    <label>Stock</label>
+                </div>
+                <div class="input-group">
+                    <textarea name="features" id="features" required></textarea>
+                    <label>Caracteristicas</label>
+                </div>
+                <div class="input-group">
+                    <div class="file-input-container">
+                        <input type="file" name="imgs" id="imgs" accept="image/*" required>
+                        <label for="imgs" class="file-input-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"></path>
+                                <path d="M16 5h6v6"></path>
+                                <path d="M8 12l3 3l6-6"></path>
+                            </svg>
+                            <span>Dale click para seleccionar la imagen del producto</span>
+                            <span class="file-name"></span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Registrar</button>
+            </div>
+        </form>
+    </div>
+    <script src="{% static 'js/AddProduct.js' %}"></script>
+    <script src="{% static 'js/FileImgP.js' %}"></script>
+</body>
+</html>
+
+    {% endblock %}
