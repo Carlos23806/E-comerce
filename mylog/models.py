@@ -8,8 +8,7 @@ import os
 class User(AbstractUser):
     name = models.CharField(max_length=100, default="Sin nombre")
     last_name = models.CharField(max_length=150)
-    email = models.EmailField(unique=True)  
-    password = models.CharField(max_length=500)  
+    email = models.EmailField(unique=True)
     imgs = models.ImageField(upload_to='uploads/UserProfile/', blank=True, default='uploads/UserProfile/default_profile_picture.jpg')
     ROLE_CHOICES = [
         (1, 'customer'),
@@ -29,12 +28,16 @@ class User(AbstractUser):
         blank=True
     )
 
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+
     def __str__(self):
         return self.username
 
 
 # Modelo de Producto
 class Product(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='products')
     name = models.CharField(max_length=150)
     description = models.TextField(max_length=2000)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -43,7 +46,7 @@ class Product(models.Model):
     imgs = models.ImageField(upload_to='uploads/', blank=True, default="uploads/DProduct.webp")  
 
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.user.username}"
     
     def delete(self, *args, **kwargs):
         if self.imgs:

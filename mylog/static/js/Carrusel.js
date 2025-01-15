@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    const backgroundImages = Array.from(images).map(img => img.dataset.carouselImage);
+    const backgroundImages = Array.from(images).map(img => img.getAttribute('data-carousel-image'));
     let currentImageIndex = 0;
     let isTransitioning = false;
 
@@ -16,8 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
         return Promise.all(backgroundImages.map(src => {
             return new Promise((resolve, reject) => {
                 const img = new Image();
-                img.onload = () => resolve(src);
-                img.onerror = () => reject(`Error loading image: ${src}`);
+                img.onload = () => {
+                    console.log('Imagen cargada:', src);
+                    resolve(src);
+                };
+                img.onerror = () => {
+                    console.error('Error cargando imagen:', src);
+                    reject(`Error loading image: ${src}`);
+                };
                 img.src = src;
             });
         }));
@@ -27,10 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isTransitioning) return;
         isTransitioning = true;
 
+        console.log('Cambiando a imagen:', backgroundImages[currentImageIndex]);
         heroBackground.style.opacity = '0';
         
         setTimeout(() => {
-            heroBackground.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
+            heroBackground.style.backgroundImage = `url("${backgroundImages[currentImageIndex]}")`;
             heroBackground.style.opacity = '1';
             updateIndicators();
             currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
@@ -44,13 +51,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Inicialización
+    // Inicialización con más logging
+    console.log('Iniciando carrusel...');
+    console.log('Imágenes encontradas:', backgroundImages);
+    
     preloadImages()
         .then(() => {
             console.log('Imágenes precargadas exitosamente');
-            heroBackground.style.backgroundImage = `url('${backgroundImages[0]}')`;
+            heroBackground.style.backgroundImage = `url("${backgroundImages[0]}")`;
             updateIndicators();
             setInterval(changeBackground, 5000);
         })
-        .catch(error => console.error('Error en la precarga:', error));
+        .catch(error => {
+            console.error('Error en la precarga:', error);
+            heroBackground.style.backgroundColor = '#333';
+        });
 });

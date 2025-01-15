@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Perfil{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles/HeaderP.css' %}">
+</head>
+<body>
+    <div class="profile-layout">
+        <nav class="profile-nav">
+            <div class="profile-info">
+                <img src="{{ user.imgs.url }}" alt="Foto de perfil" class="profile-img">
+                <h2 class="username">{{ user.username }}</h2>
+            </div>
+            
+            <div class="nav-links">
+                <a href="{% url 'mylog:user_info' %}" class="nav-link {% if request.resolver_match.url_name == 'user_info' %}active{% endif %}">
+                    <img src="{% static 'icons/Svg/User.svg' %}" alt="Info">
+                    Información Personal
+                </a>
+                <a href="{% url 'mylog:user_products' %}" class="nav-link {% if request.resolver_match.url_name == 'user_products' %}active{% endif %}">
+                    <img src="{% static 'icons/Svg/Products.svg' %}" alt="Products">
+                    Mis Productos
+                </a>
+            </div>
+
+            <div class="nav-footer">
+                <a href="{% url 'mylog:logout' %}" class="logout-btn">
+                    <img src="{% static 'icons/Svg/Logout.svg' %}" alt="Logout">
+                    Cerrar Sesión
+                </a>
+                <a href="{% url 'mylog:home' %}" class="return-btn">
+                    <img src="{% static 'icons/Svg/Return.svg' %}" alt="Return">
+                    Regresar al Catálogo
+                </a>
+            </div>
+        </nav>
+        <main class="content-area">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

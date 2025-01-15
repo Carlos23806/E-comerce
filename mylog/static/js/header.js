@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 nav.classList.remove('nav-scrolled');
             }
         });
+    } else if (currentPath === '/addproduct/'){
+        nav.classList.add('nav-register');
     } else {
         nav.classList.add('nav-scrolled');
     }

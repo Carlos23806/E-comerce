@@ -1,0 +1,84 @@
+.contanerCard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    width: 1200px;
+    justify-items: center;
+    align-items: center;
+    margin: auto;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 250px;
+    height: 400px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    height: 150px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.card .title {
+    font-size: 1.2rem;
+    margin: .6rem 0;
+}
+
+.card .Description {
+    flex-grow: 1;
+    margin: 0;
+    overflow: hidden;
+}
+
+.card .Stock, .card .Price {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.edit-btn {
+    background: var(--primary-color);
+    color: var(--background-color);
+}
+
+.edit-btn:hover {
+    background: var(--secondary-color);
+}
+
+.delete-btn {
+    background: var(--error-color);
+    color: var(--background-color);
+}
+
+.delete-btn:hover {
+    opacity: 0.9;
+}

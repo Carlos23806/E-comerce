@@ -1,0 +1,92 @@
+:root {
+    --primary-color: #4ecdc4;
+    --secondary-color: #45b7d1;
+    --error-color: #ff6b6b;
+    --success-color: #4ecdc4;
+    --text-color: #333;
+    --background-color: #ffffff;
+    --border-color: #e5e7eb;
+    --transition-speed: 0.3s;
+    --nav-width: 280px;
+}
+
+.user-details {
+    position: relative;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 20px;
+}
+
+#edit-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+#edit-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.info-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.info-item label {
+    color: var(--text-color);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.info-item p {
+    color: var(--text-color);
+    margin: 0;
+}
+
+.profile-img-forms {
+    width: 50px;
+    height: 50px;   
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid var(--primary-color);
+    padding: 3px;
+    background-color: var(--background-color);
+}
+
+.info-edit{
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    background: #0000000e;
+    margin: 5px;
+}
+.edit-btn {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}

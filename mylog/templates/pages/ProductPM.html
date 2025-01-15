@@ -1,0 +1,44 @@
+{% extends 'layouts/HeaderP.html' %}
+{% load static %}
+
+{% block title %}Modificar Producto{% endblock %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'styles/ProductPM.css' %}">
+</head>
+<div class="product-modify">
+    <h2>Modificar Producto</h2>
+    <form action="{% url 'mylog:edit_product' product.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-group">
+            <label for="name">Nombre del Producto</label>
+            <input type="text" id="name" name="name" value="{{ product.name }}" required>
+        </div>
+        <div class="input-group">
+            <label for="description">Descripción</label>
+            <textarea id="description" name="description" required>{{ product.description }}</textarea>
+        </div>
+        <div class="input-group">
+            <label for="price">Precio</label>
+            <input type="number" step="0.01" id="price" name="price" value="{{ product.price }}" required>
+        </div>
+        <div class="input-group">
+            <label for="stock">Stock</label>
+            <input type="number" id="stock" name="stock" value="{{ product.stock }}" required>
+        </div>
+        <div class="input-group">
+            <label for="features">Características</label>
+            <textarea id="features" name="features" required>{{ product.features }}</textarea>
+        </div>
+        <div class="input-group">
+            <label for="imgs">Imagen del Producto</label>
+            <input type="file" id="imgs" name="imgs">
+            {% if product.imgs %}
+            <img src="{{ product.imgs.url }}" alt="{{ product.name }}" class="product-img">
+            {% endif %}
+        </div>
+        <button type="submit" class="submit-btn">Guardar Cambios</button>
+    </form>
+</div>
+{% endblock %}

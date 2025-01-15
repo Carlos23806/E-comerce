@@ -1,15 +1,56 @@
-{% extends 'layouts/HeaderUserP.html' %}
+{% extends 'layouts/HeaderP.html' %}
 {% load static %}
 
-{% block title %}
-    Perfil de {{ user.name }}
-{% endblock %}
+{% block title %}Información Personal{% endblock %}
 
 {% block content %}
-    <div class="user-details">
-        <p>Email: {{ user.email }}</p>
-        <p>Dirección: {{ user.address }}</p>
-        <p>Rol: {{ user.get_role_display }}</p>
-        <p>Fecha de registro: {{ user.date_joined }}</p>
+<head>
+    <link rel="stylesheet" href="{% static 'styles/UserP.css' %}">
+</head>
+<div class="user-details">
+    <div class="title">
+        <h2>Información Personal</h2>
+        <button id="edit-btn" onclick="toggleEdit()">Editar</button>
     </div>
+
+    <form id="user-info-form" action="{% url 'mylog:update_user' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="info-grid">
+            <div class="info-item">
+                <label>Nombre completo:</label>
+                <p class="info-display">{{ user.name }} {{ user.last_name }}</p>
+                <input type="text" name="name" value="{{ user.name }}" class="info-edit" style="display: none;">
+                <input type="text" name="last_name" value="{{ user.last_name }}" class="info-edit" style="display: none;">
+            </div>
+            <div class="info-item">
+                <label>Usuario:</label>
+                <p class="info-display">{{ user.username }}</p>
+                <input type="text" name="username" value="{{ user.username }}" class="info-edit" style="display: none;">
+            </div>
+            <div class="info-item">
+                <label>Email:</label>
+                <p class="info-display">{{ user.email }}</p>
+                <input type="email" name="email" value="{{ user.email }}" class="info-edit" style="display: none;">
+            </div>
+            <div class="info-item">
+                <label>Dirección:</label>
+                <p class="info-display">{{ user.address|default:"No especificada" }}</p>
+                <input type="text" name="address" value="{{ user.address }}" class="info-edit" style="display: none;">
+            </div>
+            <div class="info-item">
+                <label>Contraseña:</label>
+                <p class="info-display">********</p>
+                <input type="password" name="password" placeholder="Nueva contraseña" class="info-edit" style="display: none;">
+            </div>
+            <div class="info-item">
+                <label>Imagen de perfil:</label>
+                <img src="{{ user.imgs.url }}" alt="Foto de perfil" class="profile-img-forms info-display">
+                <input type="file" name="imgs" class="info-edit" style="display: none;">
+            </div>
+        </div>
+        <button type="submit" class="edit-btn info-edit" style="display: none;">Guardar</button>
+    </form>
+</div>
+
+<script src="{% static 'js/Userp.js' %}"></script>
 {% endblock %}

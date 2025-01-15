@@ -1,0 +1,49 @@
+{% extends 'layouts/Headers.html' %}
+{% load static %}
+
+{% block title %}Carrito{% endblock %}
+
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'styles/Cart.css' %}">
+</head>
+<div class="cart-container">
+    <div class="cart">
+        <h2>Tu Carrito</h2>
+        <div class="cart-items">
+            {% for item in cart_items %}
+            <div class="cart-item">
+                <img src="{{ item.product.imgs.url }}" alt="{{ item.product.name }}">
+                <div class="item-details">
+                    <div class="item-info">
+                        <h3>{{ item.product.name }}</h3>
+                        <p class="price">Precio: ${{ item.product.price }}</p>
+                        <p class="price">Stock: {{ item.product.stock }}</p>
+                    </div>
+                    <div class="item-actions">
+                        <div class="quantity-control">
+                            <input type="number" name="quantity-{{ item.id }}" min="1" max="{{ item.product.stock }}" value="{{ item.quantity }}">
+                        </div>
+                        <p class="total">Total: ${{ item.total_price }}</p>
+                        <form action="{% url 'mylog:remove_from_cart' item.id %}" method="POST" class="remove-form">
+                            {% csrf_token %}
+                            <button type="submit" class="remove-btn">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="empty-cart">No tienes productos en tu carrito.</p>
+            {% endfor %}
+        </div>
+        {% if cart_items %}
+        <div class="cart-total">
+            <h3>Total: ${{ total_price }}</h3>
+            <button class="checkout-btn">Proceder al Pago</button>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<script src="{% static 'js/Cart.js' %}"></script>
+{% endblock %}

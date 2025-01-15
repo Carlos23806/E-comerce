@@ -1,206 +1,248 @@
-/* Authenticated user specific styles */
-.links form {
+:root {
+    --primary-color: #4ecdc4;
+    --secondary-color: #45b7d1;
+    --error-color: #ff6b6b;
+    --success-color: #4ecdc4;
+    --text-color: #333;
+    --background-color: #ffffff;
+    --transition-speed: 0.3s;
+    --nav-height: 80px;
+    /* Inherit variables from Header.css */
+}
+
+/* Base styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.links button.link {
-    padding: 0.8rem 1.5rem;
+/* Layout components */
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    /* These styles are inherited from Header.css */
+}
+
+.nav {
+    height: var(--nav-height);
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--background-color);
+    transition: all var(--transition-speed);
+    /* These styles are inherited from Header.css */
+}
+
+.nav-register{
+    position: fixed;
+    margin-bottom: 20px;
+}
+.nav-register button.link {
     background: var(--primary-color);
     color: var(--background-color);
-    font-weight: 600;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
 }
 
-.links button.link:hover {
-    background: var(--secondary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Profile image styles */
-.links img[alt="Foto de perfil"] {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(0, 0, 0);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: border 200ms ease, transform 300ms ease-in-out;
-}
-
-.links img[alt="Foto de perfil"]:hover {
-    transform: scale(1.05);
-    border: 2px solid var(--secondary-color);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
-}
-
-.link img:hover {
-    transform: scale(1.1);
-}
-
-/* User specific nav states */
-.nav-home .link .User {
-    background: transparent;
-    color: var(--background-color);
-    border: none;
-}
-
-.nav-home .link .User:hover img {
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.15);
-}
-
-.nav-scrolled .links .User {
-    background-color: transparent;
-}
-
-.nav-scrolled .links .User:hover {
-    box-shadow: none;
-}
-
-/* Logo colors */
-.nav-home .logo h1 {
-    color: var(--background-color);
-}
-
-.nav-scrolled .logo h1 {
-    color: var(--text-color);
-}
-
-/* Link hover effects */
-.link a:hover {
-    background: var(--secondary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+.containerLinks {
+    max-width: 1200px;
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* These styles are inherited from Header.css */
 }
 
 /* Navigation states */
 .nav-home {
     background: transparent;
-    backdrop-filter: blur(8px);
     position: absolute;
 }
 
 .nav-scrolled {
     position: fixed;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+    background-color: var(--background-color);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
 }
 
-/* Button and form styles */
-.links form {
-    margin: 0;
-    padding: 0;
+/* Logo styles */
+.logo {
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5),
+                 -1px -1px 2px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: var(--text-color);
 }
 
-.links button.link {
+.nav-home .logo {
+    color: var(--background-color);
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.nav-scrolled .logo {
+    color: var(--text-color);
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.1)
+    );
+}
+
+.logo:hover {
+    transform: translateY(-1px);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6),
+                 -2px -2px 4px rgba(255, 255, 255, 0.4);
+}
+
+/* Links styles */
+.links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+}
+
+/* Button and link styles */
+.link a {
+    text-decoration: none;
     padding: 0.8rem 1.5rem;
     font-weight: 600;
-    font-size: 1rem;
-    border-radius: 12px;
-    background: var(--gradient-1);
+    border-radius: 8px;
+    transition: all var(--transition-speed);
+    cursor: pointer;
+}
+
+.nav-home .link a {
+    background: transparent;
+    color: var(--background-color);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+}
+.nav-home .link a img {
+    background: var(--background-color);
+    scale: 1.1;
+}
+.nav-home .link a:hover {
+    transform: translateY(-3px);
+    filter: drop-shadow(0 6px 15px rgba(255, 255, 255, 0.2));
+}
+
+.nav-scrolled .link a {
     color: var(--background-color);
     border: none;
-    cursor: pointer;
-    transition: all var(--transition-speed);
 }
 
-.links button.link:hover {
+.nav-scrolled .link a:hover {
     transform: translateY(-3px);
-    background: var(--gradient-2);
-    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.3);
+    filter:drop-shadow(0 6px 15px rgba(0, 0, 0, 0.1)) ;
 }
 
-/* Nav home state styles */
-.nav-home button.link {
+/* Auth-specific modifications */
+.links button.link {
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all var(--transition-speed);
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.nav-home .links button.link {
     background: transparent;
     color: var(--background-color);
     border: 1px solid var(--background-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
-.nav-home button.link:hover {
+.nav-home .links button.link:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
 }
 
-/* Nav scrolled state styles */
-.nav-scrolled button.link {
+.nav-scrolled .links button.link {
     background: var(--primary-color);
     color: var(--background-color);
     border: none;
 }
 
-.nav-scrolled button.link:hover {
-    background: var(--secondary-color);
+.nav-scrolled .links button.link:hover {
     transform: translateY(-3px);
+    background: var(--secondary-color);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Profile image styles */
-.links img[alt="Foto de perfil"] {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    object-fit: cover;
-    border: 3px solid transparent;
-    background: var(--gradient-1);
-    transition: all var(--transition-speed);
-}
-
-.nav-home .links img[alt="Foto de perfil"] {
-    border-color: var(--background-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.nav-scrolled .links img[alt="Foto de perfil"] {
-    border-color: var(--primary-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.links img[alt="Foto de perfil"]:hover {
-    transform: scale(1.08) rotate(3deg);
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
-}
-
-/* Cart icon styles */
-.links img[alt="Carrito de compra"] {
+/* Basic image styles */
+.links img {
     width: 32px;
     height: 32px;
-    padding: 6px;
-    background: var(--gradient-1);
-    border-radius: 10px;
-    transition: all var(--transition-speed);
 }
 
+/* Remove .User class */
+.User {
+    padding: 0;
+    background: none;
+}
+
+/* Profile image styles */
+.User img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform var(--transition-speed);
+}
+
+.User img:hover {
+    transform: scale(1.1);
+}
+
+/* Adjust link container for profile */
+.links .link:has(.User) {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+}
+
+/* Cart icon specific styles */
 .nav-home .links img[alt="Carrito de compra"] {
     filter: brightness(0) invert(1);
 }
 
-.links img[alt="Carrito de compra"]:hover {
-    transform: scale(1.1) translateY(-2px);
-    background: var(--gradient-2);
-    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.2);
+/* Media queries */
+@media (max-width: 768px) {
+    .containerLinks {
+        width: 95%;
+    }
+    
+    .link a {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
 }
 
-/* Logo styles */
-.logo h1 {
-    font-size: 1.5rem;
-    background: var(--gradient-1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all var(--transition-speed);
+/* Content spacing */
+main {
+    padding-top: 80px;
 }
 
-.logo h1:hover {
-    background: var(--gradient-2);
-    -webkit-background-clip: text;
-    transform: scale(1.05);
+.home-page main {
+    padding-top: 0;
 }

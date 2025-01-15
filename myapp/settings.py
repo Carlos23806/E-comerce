@@ -130,6 +130,13 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'mylog', 'static')
 ]
 
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+AUTH_USER_MODEL = 'mylog.User'
+
 # Ruta para los archivos subidos por el usuario
 
 

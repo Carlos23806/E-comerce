@@ -1,0 +1,33 @@
+{% extends 'layouts/HeaderP.html' %}
+{% load static %}
+
+{% block title %}Mis Productos{% endblock %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'styles/ProductP.css' %}">
+</head>
+<div class="products-list">
+    <h2>Mis Productos</h2>
+    <div class="contanerCard" id="productContainer">
+        {% for product in products %}
+        <div class="card">
+            <img src="{{ product.imgs.url }}" alt="{{ product.name }}">
+            <h1 class="title">{{ product.name }}</h1>
+            <p class="Description">{{ product.description }}</p>
+            <p class="Stock">Stock: {{ product.stock }}</p>
+            <p class="Price">Precio: ${{ product.price }}</p>
+            <div class="actions">
+                <a href="{% url 'mylog:edit_product' product.id %}" class="edit-btn">Modificar</a>
+                <form action="{% url 'mylog:delete_product' product.id %}" method="POST" class="delete-form">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-btn">Eliminar</button>
+                </form>
+            </div>
+        </div>
+        {% empty %}
+        <p>No tienes productos registrados.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

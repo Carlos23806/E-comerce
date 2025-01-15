@@ -38,7 +38,7 @@
     transform: translate(-50%, -50%);
     color: var(--background-color);
     text-align: center;
-    z-index: 10; /* Asegura que el contenido esté sobre las imágenes */
+    z-index: 10; 
     color: #fff;
     z-index: 2;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
@@ -70,8 +70,6 @@
     background-color: var(--secondary-color);
 }
 
-
-/* Asegurarse de que el contenido principal tenga espacio debajo del carrusel */
 .main-content {
     margin-top: 50px;
     padding: 20px;
@@ -94,10 +92,10 @@
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+    padding: .8rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 250px;
-    height: 358px;
+    height: 430px; /* Adjusted height */
     display: none;
 }
 
@@ -113,16 +111,16 @@
 }
 
 .card img {
-    height: 150px;
+    height: 140px;
     object-fit: contain;
     border-radius: 8px;
 }
 
 .card .title {
     font-size: 1.2rem;
-    margin: .6rem 0;
+    margin: .2rem 0;
     white-space: nowrap;
-    height: 50px;
+    height: 40px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -134,7 +132,11 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
+}
+
+.card .Stock, .card .Price {
+    font-size: .8rem;
+    margin: 0.5rem 0;
 }
 
 .card .Buy {
